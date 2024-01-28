@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <title>Answer</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poor Story";
+            background-color: rgb(16, 36, 29);
+        }
+
+        .header__block {
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 0 auto;
+            display: flex;
+            background-color: rgb(11, 97, 69);
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .header__wrapper {
+            display: flex; 
+            align-items: center;
+            gap: 1000px;
+            color: #fff;
+        }
+
+        .header__img {
+            width: 90px;
+            height: 90px;
+        }
+
+        .header__p {
+            font-size: 50px;
+        }
+
+        /* Main */
+
+        .answer__block .wrapper {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 50px;
+        }
+
+        .answer__block__h1 {
+            font-size: 100px;
+            color: #fff;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .answer__form {
+            border: none;
+            background-color: rgb(8, 169, 139);
+            border-radius: 10px;
+            margin: 0 auto;
+            max-width: 90%;
+        }
+
+        .answer__block__p {
+            font-size: 30px;
+            color: #fff;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .answer__block__button {
+            border: none; 
+            border-radius: 10px; 
+            padding: 15px 40px;
+            background-color: rgb(94, 129, 170);
+            color: #fff;
+            font-family: "Poor Story";
+            font-size: 20px;
+            margin-bottom: 50px;
+        }
+
+        .answer__block__button:hover {
+            background-color: rgb(43, 59, 77);
+        }
+
+        .answer__block__p {
+            color: #fff;
+            font-size: 40px;
+        }
+
+        .answer__block__p span {
+            color: rgb(0, 200, 255);
+        }
+
+        /* Media */
+
+        @media (max-width: 1400px) {
+            .header__wrapper {
+                gap: 500px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .header__wrapper {
+                gap: 300px;
+            }
+
+            .main__block__h1 {
+                font-size: 80px;
+            }
+        }
+
+
+        @media (max-width: 800px) {
+            .header__wrapper {
+                gap: 200px;
+            }
+
+            .main__block__h1 {
+                font-size: 80px;
+            }
+
+            .header__img {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .header__p {
+                font-size: 30px;
+            }
+
+            .answer__block__h1 {
+                font-size: 80px;
+            }
+
+            .answer__form {
+                border: none;
+                background-color: rgb(8, 169, 139);
+                border-radius: 10px;
+                margin: 0 auto;
+                max-width: 90%;
+            }
+
+            .answer__block__p {
+                font-size: 25px;
+            }
+
+            .header__h1 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .header__wrapper {
+                gap: 100px;
+            }
+
+            .main__block__h1 {
+                font-size: 60px;
+            }
+
+            .header__img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .header__p {
+                font-size: 25px;
+            }
+
+            .answer__block__h1 {
+                font-size: 70px;
+            }
+
+            .answer__form {
+                border: none;
+                background-color: rgb(8, 169, 139);
+                border-radius: 10px;
+                margin: 0 auto;
+                max-width: 90%;
+            }
+
+            .answer__block__p {
+                font-size: 25px;
+            }
+
+            .header__h1 {
+                font-size: 25px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .header__wrapper {
+                gap: 50px;
+            }
+
+            .main__block__h1 {
+                font-size: 40px;
+            }
+
+            .header__img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .header__p {
+                font-size: 20px;
+            }
+
+            .answer__block__h1 {
+                font-size: 50px;
+            }
+
+            .answer__form {
+                border: none;
+                background-color: rgb(8, 169, 139);
+                border-radius: 10px;
+                margin: 0 auto;
+                max-width: 90%;
+            }
+
+            .answer__block__p {
+                font-size: 20px;
+            }
+
+            .header__h1 {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header__block">
+            <div class="header__wrapper">
+                <h1 class="header__h1">CREATED BY</h1>
+                <p class="header__p">linwex</p>
+            </div>
+            <img class="header__img" src="{{ url_for('static', path='/images.jpg') }}" />
+        </div>
+    </header>
+    <main class="answer__block">
+        <div class="wrapper">
+            <h1 class="answer__block__h1">Answer</h1>
+            <p class="answer__block__p">User: <span>{{ username }}</span></p>
+            <div class="answer__form">
+                <p id="answer" class="answer__block__p">{{ text }}</p>
+            </div>
+            <div>
+                <button id="readTextBtn" class="answer__block__button">Read Text</button>
+                <button id="stopTextBtn" class="answer__block__button">Stop</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Переменная для хранения текущего объекта синтеза речи
+        let currentSpeech;
+    
+        // Функция для чтения текста
+        function readText(text, speed) {
+            // Создаем объект для синтеза речи
+            const speechSynthesis = window.speechSynthesis;
+            // Создаем объект, содержащий текст для чтения
+            const speechText = new SpeechSynthesisUtterance(text);
+            speechText.rate = speed;
+    
+            // Запускаем синтез речи
+            speechSynthesis.speak(speechText);
+    
+            // Сохраняем текущий объект синтеза речи
+            currentSpeech = speechText;
+        }
+    
+        // Функция для остановки чтения текста
+        function stopText() {
+            if (currentSpeech) {
+                // Останавливаем синтез речи
+                window.speechSynthesis.cancel();
+            }
+        }
+    
+        // Назначаем обработчик события для кнопки "Read Text"
+        document.getElementById('readTextBtn').addEventListener('click', function() {
+            // Текст, который нужно прочитать
+            var textToRead = document.getElementById('answer').textContent;
+    
+            // Вызываем функцию для чтения текста
+            readText(textToRead, 2.0);
+        });
+    
+        // Назначаем обработчик события для кнопки "Stop"
+        document.getElementById('stopTextBtn').addEventListener('click', function() {
+            // Вызываем функцию для остановки чтения текста
+            stopText();
+        });
+    </script>
+</body>
+</html>

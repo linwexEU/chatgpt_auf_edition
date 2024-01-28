@@ -1,0 +1,20 @@
+version: '3.7' 
+services:
+  db: 
+    image: postgres:15 
+    container_name: chat_api_db 
+    env_file:
+      - .env-non-dev
+
+  chat_api: 
+    image: chat_api
+    build: 
+      context: . 
+    container_name: chat_api_app
+    env_file:
+      - .env-non-dev
+    depends_on:
+      - db 
+    command: ["/chatgpt/docker/app.sh"]
+    ports: 
+      - 7777:8000

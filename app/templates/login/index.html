@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login AUF</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header__block">
+            <div class="header__wrapper">
+                <h1 class="header__h1">CREATED BY</h1>
+                <p class="header__p">linwex</p>
+            </div>
+            <img class="header__img" src="{{ url_for('static', path='/images.jpg') }}" />
+        </div>
+    </header>
+    <main>
+        <div class="form">
+            <h1 class="form__h1">Login form</h1>
+            <input id="username" class="form__input" placeholder="Enter your username" />
+            <input id="password" class="form__input" type="password" placeholder="Enter your password" />
+            <div class="form__wrapper__button">
+                <button id="loginBtn" class="form__button">Login</button>
+                <button id="registerBtn" class="form__button">Register</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', async function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Login failed');
+                }
+
+                const redirectUrl = "/page/main_page"; 
+
+                // Перенаправляем пользователя на указанную страницу
+                window.location.href = redirectUrl;
+
+                const data = await response.json();
+                alert('Login successful!'); // Показать сообщение об успешном входе
+                // Дополнительные действия после успешного входа, например, перенаправление на другую страницу
+            } 
+            catch (error) {
+                console.error('Error during login:', error.message);
+                alert('Login failed'); // Показать сообщение об ошибке входа
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            // Получаем ссылку для перенаправления
+            const loginUrl = '/page/register_page'; // Замените на вашу ссылку
+
+            // Перенаправляем пользователя на указанную ссылку в той же странице
+            window.location.href = loginUrl;
+        });
+    </script>
+</body>
+</html>

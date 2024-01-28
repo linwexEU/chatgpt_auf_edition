@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+    <title>GPT AUF</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poor Story";
+            background-color: rgb(16, 36, 29);
+        }
+
+        /* Header */
+
+        .header__block {
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 0 auto;
+            display: flex;
+            background-color: rgb(11, 97, 69);
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header__wrapper {
+            display: flex; 
+            align-items: center;
+            gap: 1000px;
+            color: #fff;
+        }
+
+        .header__img {
+            width: 90px;
+            height: 90px;
+        }
+
+        .header__p {
+            font-size: 50px;
+        }
+
+        /* Main */
+
+        .main__block__h1 {
+            font-size: 100px;
+            color: #fff;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .main__block div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .main__block .wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 70px;
+            margin-bottom: 50px;
+        }
+
+        .main__block__input {
+            border: none; 
+            border-radius: 15px;
+            padding: 20px 100px;
+            font-family: "Poor Story";
+            font-size: 20px;
+        }
+
+        .main__block__button {
+            border: none; 
+            border-radius: 10px; 
+            padding: 15px 40px;
+            background-color: rgb(94, 129, 170);
+            color: #fff;
+            font-family: "Poor Story";
+            font-size: 20px;
+        }
+
+        .main__block__button:hover {
+            background-color: rgb(43, 59, 77);
+        }
+
+        .main__block__select {
+            font-family: "Poor Story";
+            border: none; 
+            border-radius: 15px;
+            padding: 20px 60px;
+        }
+
+        .main__block__p {
+            color: #fff;
+            font-size: 40px;
+        }
+
+        .main__block__p span {
+            color: rgb(0, 200, 255);
+        }
+
+        /* media */
+
+        @media (max-width: 1400px) {
+            .header__wrapper {
+                gap: 500px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .header__wrapper {
+                gap: 300px;
+            }
+
+            .main__block__h1 {
+                font-size: 80px;
+            }
+        } 
+
+        @media (max-width: 740px) {
+            .header__wrapper {
+                gap: 200px;
+            }
+
+            .main__block__h1 {
+                font-size: 60px;
+            }
+        } 
+
+        @media (max-width: 640px) {
+            .header__wrapper {
+                gap: 150px;
+            }
+
+            .main__block__h1 {
+                font-size: 50px;
+            }
+
+            .main__block__input {
+                padding: 20px 80px;
+                font-size: 13px;
+            }
+
+            .main__block__select {
+                padding: 20px 40px;
+            }
+
+            .main__block__button {
+                padding: 15px 30px;
+            }
+        } 
+
+        @media (max-width: 570px) {
+            .header__wrapper {
+                gap: 50px;
+            }
+        } 
+
+        @media (max-width: 450px) {
+            .header__wrapper {
+                gap: 40px;
+            }
+
+            .header__p {
+                font-size: 30px;
+            }
+
+            .header__img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .header__h1 {
+                font-size: 30px;
+            }
+
+            .main__block__h1 {
+                font-size: 30px;
+            }
+
+            .main__block__input {
+                padding: 20px 60px;
+                font-size: 13px;
+            }
+
+            .main__block__select {
+                padding: 15px 30px;
+            }
+
+            .main__block__button {
+                padding: 10px 20px;
+            }
+
+            .main__block .wrapper {
+                gap: 50px;
+            }
+        } 
+
+        @media (max-width: 360px) {
+
+            .header__p {
+                font-size: 20px;
+            }
+
+            .header__img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .header__h1 {
+                font-size: 20px;
+            }
+
+            .main__block .wrapper {
+                gap: 30px;
+            }
+        } 
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header__block">
+            <div class="header__wrapper">
+                <h1 class="header__h1">CREATED BY</h1>
+                <p class="header__p">linwex</p>
+            </div>
+            <img class="header__img" src="{{ url_for('static', path='/images.jpg') }}" />
+        </div>
+    </header>
+    <main class="main__block">
+        <div>
+            <h1 class="main__block__h1">ChatGPT AUF Edition</h1>
+            <p class="main__block__p">User: <span>{{ username }}</span></p>
+            <input id="inputGpt" class="main__block__input" placeholder="Write your query" /> 
+            <select id="mySelect" class="main__block__select">
+                {% for item in items %}
+                    <option>{{item}}</option>
+                {% endfor %}
+            </select>
+            <div class="wrapper">
+                <button id="answerBtn" class="main__block__button">AUF</button>
+                <button id="styleBtn" class="main__block__button">ADD nEw stylE</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('answerBtn').addEventListener('click', function() {
+        // Получаем значение из поля ввода
+        var inputValue = document.getElementById('inputGpt').value;
+        // Получаем значение из списка
+        var selectValue = document.getElementById('mySelect').value;
+
+        // Формируем данные для отправки на сервер
+        var requestData = {
+            query: inputValue,
+            style: selectValue
+        };
+
+        // Отправляем POST-запрос на сервер
+        fetch('/gpt/get_answer_from_gpt', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Обработка ответа от сервера
+                console.log('Server response:', data);
+                // Возможно, здесь вы хотите что-то сделать с ответом от сервера
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
+            const loginUrl = '/page/answer_page'; 
+
+            window.location.href = loginUrl;
+        });
+    </script>
+    <script>
+        document.getElementById('styleBtn').addEventListener('click', function() {
+            // Получаем ссылку для перенаправления
+            const loginUrl = '/page/add_style_page'; // Замените на вашу ссылку
+
+            // Перенаправляем пользователя на указанную ссылку в той же странице
+            window.location.href = loginUrl;
+        });
+    </script>
+</body>
+</html>
