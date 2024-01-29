@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, BackgroundTasks
 from app.api.bingai import ChatGPT
 from app.api.schemas import AufData
 from app.styles.dao import StylesDAO
@@ -13,20 +13,17 @@ router = APIRouter(
 )
 
 
-@router.post("/get_answer_from_gpt")
-async def get_answer_from_gpt(data: AufData, current_user: User = Depends(get_current_user)): 
-    style = await StylesDAO.get_style(data.style.split("-")[0].strip())
+async def get_answer_from_gpt(style, user): 
+    style = await StylesDAO.get_style(style)
     if style is None: 
         style = ""
     
-    answer = ChatGPT.get_answer(style + data.query) 
-    
-    await UsersDAO.add_answer(current_user["Users"].user_id, data.query, answer)
+    answer = ChatGPT.get_answer(style + style)   
+    await UsersDAO.add_answer(user["Users"].user_id, style, answer)
 
-    return {"message": answer}
-    
-
-
+@router.post("/gpt_answer")
+async def get_answer_from_task(background_tasks: BackgroundTasks, data: AufData, current_user: User = Depends(get_current_user)): 
+    background_tasks.add_task(get_answer_from_gpt, data.style.split("-")[0].strip(), current_user)
 
 
 
