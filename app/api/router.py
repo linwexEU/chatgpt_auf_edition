@@ -13,17 +13,17 @@ router = APIRouter(
 )
 
 
-async def get_answer_from_gpt(style, user): 
+async def get_answer_from_gpt(style, query, user): 
     style = await StylesDAO.get_style(style)
     if style is None: 
         style = ""
     
-    answer = ChatGPT.get_answer(style + style)   
+    answer = ChatGPT.get_answer(style + query)   
     await UsersDAO.add_answer(user["Users"].user_id, style, answer)
 
 @router.post("/gpt_answer")
 async def get_answer_from_task(background_tasks: BackgroundTasks, data: AufData, current_user: User = Depends(get_current_user)): 
-    background_tasks.add_task(get_answer_from_gpt, data.style.split("-")[0].strip(), current_user)
+    background_tasks.add_task(get_answer_from_gpt, data.style.split("-")[0].strip(), data.query, current_user)
 
 
 
