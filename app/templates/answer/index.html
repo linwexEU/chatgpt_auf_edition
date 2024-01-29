@@ -101,6 +101,13 @@
             color: rgb(0, 200, 255);
         }
 
+        .answer__block__select {
+            font-family: "Poor Story";
+            border: none; 
+            border-radius: 15px;
+            padding: 20px 60px;
+        }
+
         /* Media */
 
         @media (max-width: 1400px) {
@@ -255,6 +262,13 @@
             <div class="answer__form">
                 <p id="answer" class="answer__block__p">{{ text }}</p>
             </div>
+            <select id="mySelect" class="answer__block__select">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
             <div>
                 <button id="readTextBtn" class="answer__block__button">Read Text</button>
                 <button id="stopTextBtn" class="answer__block__button">Stop</button>
@@ -264,7 +278,7 @@
     <script>
         // Переменная для хранения текущего объекта синтеза речи
         let currentSpeech;
-    
+
         // Функция для чтения текста
         function readText(text, speed) {
             // Создаем объект для синтеза речи
@@ -292,9 +306,10 @@
         document.getElementById('readTextBtn').addEventListener('click', function() {
             // Текст, который нужно прочитать
             var textToRead = document.getElementById('answer').textContent;
-    
+            var selectValue = document.getElementById('mySelect').value;
+
             // Вызываем функцию для чтения текста
-            readText(textToRead, 2.0);
+            readText(textToRead, selectValue);
         });
     
         // Назначаем обработчик события для кнопки "Stop"
