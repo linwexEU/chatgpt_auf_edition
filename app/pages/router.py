@@ -1,11 +1,10 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
-from app.api.router import get_answer_from_gpt
-from app.api.schemas import AufData
 from app.styles.dao import StylesDAO
 from app.users.dao import UsersDAO
 from app.users.dependencies import get_current_user
 from app.users.schemas import User
+import asyncio
 
 
 router = APIRouter(
