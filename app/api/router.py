@@ -19,7 +19,7 @@ async def get_answer_from_gpt(style, query, user):
         style = ""
     
     answer = ChatGPT.get_answer(style + query)   
-    await UsersDAO.add_answer(user["Users"].user_id, style, answer)
+    await UsersDAO.add_answer(user["Users"].user_id, query, answer)
 
 @router.post("/gpt_answer")
 async def get_answer_from_task(background_tasks: BackgroundTasks, data: AufData, current_user: User = Depends(get_current_user)): 
